@@ -1,0 +1,17 @@
+{
+    "name": "vitalijzukovskij/dsttest",
+    "description": "Test task",
+    "authors": [
+        {
+            "name": "Vitaliy",
+            "email": "zhukovskiy.vitaliy@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Http\\": "Http",
+            "Helpers\\": "Helpers"
+        }
+    },
+    "require": {}
+}
