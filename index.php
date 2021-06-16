@@ -17,7 +17,7 @@ $router->get('/city/([A-z0-9\-]+)/to-localtime/(\d+)', function($cityId, $timest
     $response->toJson();
 });
 
-$router->get('/city/([A-z0-9\-]+)/to-localtime/(\d+)', function($cityId, $timestamp) {
+$router->get('/city/([A-z0-9\-]+)/from-localtime/(\d+)', function($cityId, $timestamp) {
     $response = (new DatetimeController)->fromLocaltime($cityId, $timestamp);
     $response->toJson();
 });
