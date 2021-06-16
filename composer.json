@@ -10,8 +10,12 @@
     "autoload": {
         "psr-4": {
             "Http\\": "Http",
-            "Helpers\\": "Helpers"
+            "Helpers\\": "Helpers",
+            "Repositories\\": "Repositories",
+            "Configs\\": "Configs"
         }
     },
-    "require": {}
+    "require": {
+        "bramus/router": "^1.5"
+    }
 }

@@ -1,23 +1,25 @@
 <?php
 require_once './vendor/autoload.php';
 
-use Http\Request;
 use Http\Response;
-use Helpers\RoutesHelper;
+use Bramus\Router\Router;
 use Http\Controllers\DatetimeController;
 
-$request = Request::getInstance();
+$router = new Router;
+$router->set404(function() {
+    $data = ['error' => 'API method not found'];
+    $response = new Response($data);
+    $response->error()->toJson();
+});
 
-if (RoutesHelper::isGet('/city/{city}/to-localtime/{time}')) {
-    $response = (new DatetimeController)->localtime($request);
+$router->get('/city/([A-z0-9\-]+)/to-localtime/(\d+)', function($cityId, $timestamp) {
+    $response = (new DatetimeController)->toLocaltime($cityId, $timestamp);
     $response->toJson();
-}
+});
 
-if (RoutesHelper::isGet('/city/{city}/from-localtime/{time}')) {
-    $response = (new DatetimeController)->localtime($request);
+$router->get('/city/([A-z0-9\-]+)/to-localtime/(\d+)', function($cityId, $timestamp) {
+    $response = (new DatetimeController)->fromLocaltime($cityId, $timestamp);
     $response->toJson();
-}
+});
 
-$data = ['error' => 'API method not found'];
-$response = new Response($data);
-$response->error()->toJson();
+$router->run();
