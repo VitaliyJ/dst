@@ -12,7 +12,10 @@
             "Http\\": "Http",
             "Helpers\\": "Helpers",
             "Repositories\\": "Repositories",
-            "Configs\\": "Configs"
+            "Configs\\": "Configs",
+            "Entities\\": "Entities",
+            "Services\\": "Services",
+            "Thirdparties\\": "Thirdparties"
         }
     },
     "require": {
