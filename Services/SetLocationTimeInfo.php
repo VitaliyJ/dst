@@ -60,6 +60,8 @@ class SetLocationTimeInfo
         $redis->hset($key, 'zoneStart', $time->dstStart());
         $redis->hset($key, 'zoneEnd', $time->dstEnd());
         $redis->expire($key, self::CACHE_EXPIRY_TIME);
+
+        (new CacheKeySet)->addKey($key);
     }
 
     public static function locationTimeKey(Location $location): string

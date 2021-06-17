@@ -22,4 +22,9 @@ $router->get('/city/([A-z0-9\-]+)/from-localtime/(\d+)', function($cityId, $time
     $response->toJson();
 });
 
+$router->put('/time-info/reset', function() {
+    $response = (new DatetimeController)->resetInfo();
+    $response->toJson();
+});
+
 $router->run();
