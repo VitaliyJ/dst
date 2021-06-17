@@ -12,7 +12,6 @@ class City
     private string $countryISO;
     private string $name;
     private Location $location;
-    private Time $time;
 
     /**
      * City constructor.
@@ -56,15 +55,5 @@ class City
     public function location(): Location
     {
         return $this->location;
-    }
-
-    public function time(): Time
-    {
-        return $this->time;
-    }
-
-    public function setTime(Time $time): void
-    {
-        $this->time = $time;
     }
 }

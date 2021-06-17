@@ -2,7 +2,6 @@
 
 namespace Services;
 
-use Entities\City;
 use Entities\Location;
 use Entities\Time;
 use Repositories\Redis;
@@ -21,14 +20,16 @@ class SetLocationTimeInfo
     }
 
     /**
-     * @param City $city
+     * @param Location $location
+     * @return Time
      * @throws Exception
      */
-    public function exec(City $city): void
+    public function updatedTime(Location $location): Time
     {
-        $timeInfo = $this->getTime($city->location());
-        $this->storeInRedis($city->location(), $timeInfo);
-        $city->setTime($timeInfo);
+        $timeInfo = $this->getTime($location);
+        $this->storeInRedis($location, $timeInfo);
+
+        return $timeInfo;
     }
 
     /**

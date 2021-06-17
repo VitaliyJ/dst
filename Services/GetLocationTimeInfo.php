@@ -49,10 +49,7 @@ class GetLocationTimeInfo
         $cache = $this->fromCache($city->location());
 
         if (empty($cache)) {
-            $service = new SetLocationTimeInfo;
-            $service->exec($city);
-
-            return $city->time();
+            return (new SetLocationTimeInfo)->updatedTime($city->location());
         }
 
         return new Time(
